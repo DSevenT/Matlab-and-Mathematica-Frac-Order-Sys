@@ -42,13 +42,13 @@ mu = 0.5;
 fig= figure;
 set(fig, 'Position',  [661,40,745,716])
 set(gcf,'color','w');
-t = 0:0.01:1;
+t = 0:0.001:1;
 for i=1:length(kp)
     y_s = @(s)(s+1)*(kp(i)+kd(i)*s^mu)/((s^2+sqrt(s+2)+(s+1)*(kp(i)+kd(i)*s^mu)));
-    y_t = euler_inversion_sym(y_s,t,64);
+    y_t = euler_inversion_sym(y_s,t);
     subplot(length(kp),1,i)
     plot(t, y_t, 'LineWidth', 2);
     xlabel('$t$', 'FontSize', 18, 'interpreter', 'latex')
     ylabel('$y(t)$', 'FontSize', 18, 'interpreter', 'latex')
-     legend( sprintf('(k_p,k_d)=(%g,%g)', kp(i),kd(i)) )
+    legend( sprintf('(k_p,k_d)=(%g,%g)', kp(i),kd(i)) )
 end
