@@ -4,7 +4,7 @@ clearvars
 close all
 clc
 %% w equal to 0:
-kp0 = -1);
+kp0 = -1;
 kd0 = 0:0.01:1;
 
 %% w not equal to 0
