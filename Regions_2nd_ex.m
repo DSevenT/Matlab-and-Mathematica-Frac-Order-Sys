@@ -5,12 +5,12 @@ close all
 clc
 %% w equal to 0:
 kp0 = -1;
-kd0 = 0:0.01:1;
+kd0 = -1:0.01:1;
 
 %% w not equal to 0
 %for mu = 0.1:0.01:1
-mu = 0.5;
-w = 0.00001:0.01:5;
+mu = 0.6;
+w = 0.00001:0.01:2;
 kp=(((-1)+w.^2).^2).^(1/4).*((-1).*cos((1/2).*angle(1+(-1).*w.^2))+(w.^2) ...
   .^((1/2).*mu).*((w.^4).^((1/2).*mu)).^(-1/2).*cot(mu.*angle(sqrt(-1).*w) ...
   ).*sin((1/2).*angle(1+(-1).*w.^2)));
@@ -24,14 +24,13 @@ plot(kp0*ones(1, length(kd0)), kd0,'LineWidth', 2)
 %% Plot config
 set(gcf,'color','w');
 box on
-xlim([-3 3])
-ylim([-5 5])
+xlim([-3 1])
 xlabel('$k_d$', 'FontSize', 18, 'interpreter', 'latex')
 ylabel('$k_p$', 'FontSize', 18, 'interpreter', 'latex')
 %end
 %%
 %% Controller gains
-[kp,ki]=ginput(1);
+[kp,ki]=ginput(3);
 %% Closed-loop TF
 fig= figure;
 set(fig, 'Position',  [661,40,745,716])
