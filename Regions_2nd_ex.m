@@ -36,7 +36,7 @@ ylabel('$k_p$', 'FontSize', 18, 'interpreter', 'latex')
 fig= figure;
 set(fig, 'Position',  [661,40,745,716])
 set(gcf,'color','w');
-t = 0:0.01:1;
+t = 0:0.01:25;
 for i=1:length(kp)
     y_s = @(s)(kp(i)+kd(i)*s^mu)/((sqrt(s^2+1)*(kp(i)+kd(i)*s^mu)));
     y_t = euler_inversion_sym(y_s,t);
