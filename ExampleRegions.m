@@ -45,7 +45,7 @@ set(fig, 'Position',  [661,40,745,716])
 set(gcf,'color','w');
 t = 0:0.001:1;
 for i=1:length(kp)
-    y_s = @(s)(s+1)*(kp(i)+kd(i)*s^mu)/((s^2+sqrt(s+2)+(s+1)*(kp(i)+kd(i)*s^mu)));
+    y_s = @(s)(s+1)*(kp(i)+kd(i)*s^mu)/((s^2+1+sqrt(s+2)+(s+1)*(kp(i)+kd(i)*s^mu)));
     y_t = euler_inversion_sym(y_s,t);
     subplot(length(kp),1,i)
     plot(t, y_t, 'LineWidth', 2);
